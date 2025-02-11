@@ -1,6 +1,4 @@
 import { Module, ValidationPipe } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
@@ -42,9 +40,8 @@ const PINO_LOGGER_EXCLUDE_HOSTNAME_PID = { base: undefined };
     AuthModule,
     DatabaseModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
     // JwtService,
     // {
     //   provide: APP_GUARD,

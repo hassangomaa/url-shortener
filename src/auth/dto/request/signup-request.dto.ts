@@ -1,14 +1,14 @@
 import { IsEmail, IsString, Matches, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class SignupStudentDto {
+export class SignupRequestDto {
   @ApiProperty()
   @IsEmail()
   email: string;
 
   @ApiProperty({
     description:
-      'Password must include at least one number and one special character, min length is (8)',
+      'Password must include at least one number and one special character, min length is 8',
   })
   @IsString()
   @MinLength(8)

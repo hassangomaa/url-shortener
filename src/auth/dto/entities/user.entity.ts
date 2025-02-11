@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UserEntity {
-  @ApiProperty({ type: Number, description: 'sequence number (6 digits)' })
+  @ApiProperty({ type: Number, description: 'User ID' })
   readonly id: number;
 
   @ApiProperty()
@@ -10,7 +10,7 @@ export class UserEntity {
   readonly password: string;
 
   @ApiProperty({ type: Date })
-  readonly createdAt: Date;
+  readonly created_at: Date;
 
   constructor(props: Partial<UserEntity>) {
     Object.assign(this, props);

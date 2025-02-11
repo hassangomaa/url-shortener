@@ -1,7 +1,6 @@
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { json } from 'express';
 import { AppModule } from './app.module';
-import { SwaggerInit } from './swagger/swagger.config';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 import helmet from 'helmet';
 import {

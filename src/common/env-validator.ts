@@ -42,31 +42,14 @@ class EnvironmentVariables {
   @IsString()
   SWAGGER_PASSWORD: string;
 
-  // Jwt
-
-  //JWT_VERIFICATION_TOKEN_SECRET
-  @IsString()
-  JWT_VERIFICATION_TOKEN_SECRET?: string;
-
-  // Hashing
-
-  @IsString()
-  HASH_SECRET: string;
-
   // Seed
 
   @IsString()
-  @IsOptional()
-  ADMIN_SEED_USERNAME?: string;
-
-  @IsString()
   @IsEmail()
-  @IsOptional()
-  ADMIN_SEED_EMAIL?: string;
+  USER_SEED_EMAIL?: string;
 
   @IsString()
-  @IsOptional()
-  ADMIN_SEED_PASSWORD?: string;
+  USER_SEED_PASSWORD?: string;
 }
 
 export function validateEnv(config: Record<string, unknown>) {

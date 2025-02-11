@@ -14,6 +14,7 @@ import * as basicAuth from 'express-basic-auth';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { LanguageEnum } from '@app/lib';
 import { AllExceptionsFilter } from './common';
+// import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   // Create the HTTP server
@@ -85,6 +86,19 @@ async function bootstrap() {
   // app.enableShutdownHooks();
 
   await app.listen(PORT);
+  // const server = app.getHttpServer();
+  // const router = server._events.request._router;
+  // const routes = router.stack
+  //   .filter((layer) => layer.route)
+  //   .map((layer) => ({
+  //     method: Object.keys(layer.route.methods)[0].toUpperCase(),
+  //     path: layer.route.path,
+  //   }));
+
+  // Logger.log('🚀 Registered Routes:', 'Routes');
+  // routes.forEach((route) =>
+  //   Logger.log(`${route.method} - ${route.path}`, 'Route'),
+  // );
 
   console.log(`Server running on ${await app.getUrl()})`);
   console.log(`Swagger running on ${await app.getUrl()}/api-docs`);

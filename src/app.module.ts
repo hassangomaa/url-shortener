@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { LoggerModule } from 'nestjs-pino';
 import { validateEnv } from './common';
+import { UrlsModule } from './urls/urls.module';
 
 const PINO_LOGGER_EXCLUDE_HOSTNAME_PID = { base: undefined };
 
@@ -39,6 +40,7 @@ const PINO_LOGGER_EXCLUDE_HOSTNAME_PID = { base: undefined };
     }),
     AuthModule,
     DatabaseModule,
+    UrlsModule,
   ],
   controllers: [],
   providers: [

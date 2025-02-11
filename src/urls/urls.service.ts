@@ -52,7 +52,6 @@ export class UrlsService {
     return originalUrl;
   }
 
-
   async getUrlStats(
     shortUrl: string,
   ): Promise<{ shortUrl: string; visitCount: number }> {

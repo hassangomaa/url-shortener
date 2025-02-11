@@ -73,11 +73,12 @@ async function migrate() {
 
   /// TODO: Add Seed Data
   console.log('Seeding data...');
-  const hashedPassword = await bcrypt.hash('12345678', 10);
-
+  const hashedPassword = await bcrypt.hash(process.env.USER_SEED_PASSWORD, 10);
+  const email = process.env.USER_SEED_EMAIL;
+  const now = new Date();
   await db.query(
-    `INSERT INTO users (email, password) VALUES ('user@app.com', $1)`,
-    [hashedPassword],
+    `INSERT INTO users (email, password, created_at) VALUES ($1, $2, $3);`,
+    [email, hashedPassword, now],
   );
 
   console.log('Data seeding complete.');

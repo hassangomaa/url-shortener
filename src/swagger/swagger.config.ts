@@ -13,8 +13,8 @@ export class SwaggerInit {
   static init(app: INestApplication) {
     const config = new DocumentBuilder()
       .addBearerAuth()
-      .setTitle('The Url Shortner App API')
-      .setDescription('The Url Shortner App API description')
+      .setTitle('URL Shortener API')
+      .setDescription('API for shortening URLs and tracking visits')
       .setVersion('1.0')
       .addServer(
         process.env.NODE_ENV === 'production'

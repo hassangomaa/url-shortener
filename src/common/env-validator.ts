@@ -12,7 +12,6 @@ class EnvironmentVariables {
   // General
 
   @IsString()
-  @IsOptional()
   NODE_ENV?: string;
 
   @IsNumber()

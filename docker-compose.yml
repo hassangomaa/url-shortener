@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: app
+    build: .
+    environment:
+      PORT: ${PORT}
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      LOG_LEVEL: ${LOG_LEVEL}
+      LOG_FORMAT: ${LOG_FORMAT}
+      SWAGGER_USER: ${SWAGGER_USER}
+      SWAGGER_PASSWORD: ${SWAGGER_PASSWORD}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - .:/app
+      - app_modules:/app/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command: bash -c "npm run start:prod"
+    networks:
+      - app_network
+
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+volumes:
+  app_modules:
+  db_data:
+
+networks:
+  app_network:

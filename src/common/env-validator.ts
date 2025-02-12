@@ -24,6 +24,15 @@ class EnvironmentVariables {
   @IsString()
   DATABASE_URL: string;
 
+  @IsString()
+  DB_NAME: string;
+
+  @IsString()
+  DB_USER: string;
+
+  @IsString()
+  DB_PASSWORD: string;
+
   // Logger
 
   @IsString()

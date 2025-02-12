@@ -2,98 +2,293 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<h1 align="center">🚀 URL Shortener API - NestJS</h1>
+<p align="center">A fully-featured URL shortening API built with <a href="http://nestjs.com" target="_blank">NestJS</a>, PostgreSQL, and JWT authentication.</p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+![GitHub repo size](https://img.shields.io/github/repo-size/hassangomaa/url-shortener)
+![GitHub stars](https://img.shields.io/github/stars/hassangomaa/url-shortener?style=social)
+![GitHub license](https://img.shields.io/github/license/hassangomaa/url-shortener)
 
-## Description
+## 📌 Project Overview
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The **URL Shortener API** is a **full-fledged backend system** designed to shorten URLs, track visits, and retrieve analytics. The system ensures **scalability, security, and performance** while strictly following **DRY**, **SOLID**, and **clean architecture** principles.
 
-## Project setup
+This project is fully **Dockerized** and uses **PostgreSQL** as the database, with **raw SQL queries** for optimized performance.
 
-```bash
-$ yarn install
+### ✅ Developed by **HASSAN GOMAA** from scratch.
+
+---
+
+## 🚀 Features
+
+- **Full RESTful APIs** with **raw SQL queries** for maximum efficiency.
+- **JWT Authentication** (Signup & Signin).
+- **Shorten URLs** with user authentication.
+- **Redirect via Short URL**.
+- **Track Visits** (IP, User-Agent, Timestamp).
+- **Retrieve Statistics** (Visit count for each shortened URL).
+- **Database Migrations & Seeding**.
+- **Optimized DB indexes & queries**.
+- **Swagger API Documentation** for testing.
+- **Docker & Docker Compose** for easy deployment.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tech                        | Description                                                |
+| --------------------------- | ---------------------------------------------------------- |
+| **NestJS**                  | TypeScript-based backend framework                         |
+| **PostgreSQL**              | Database for storing URLs and tracking visits              |
+| **TypeScript**              | Static typing for maintainability                          |
+| **JWT (JSON Web Tokens)**   | Secure authentication                                      |
+| **Docker & Docker Compose** | Containerized development & deployment                     |
+| **Prisma (ORM)**            | Database migrations (raw SQL queries used for performance) |
+| **Bcrypt**                  | Secure password hashing                                    |
+| **Swagger**                 | API Documentation                                          |
+| **Postman**                 | API testing & debugging                                    |
+
+---
+
+## 📁 Project Structure
 ```
 
-## Compile and run the project
+src/
+│── auth/ # Authentication module
+│ ├── controllers/ # Auth Controllers
+│ ├── services/ # Auth Services
+│ ├── dto/ # Data Transfer Objects (Request/Response)
+│── urls/ # URL Shortening module
+│ ├── controllers/ # URL Controllers
+│ ├── services/ # URL Services
+│ ├── dto/ # Data Transfer Objects (Request/Response)
+│── database/ # Database Service & Migrations
+│── common/ # Shared utilities & helpers
+│── config/ # App configuration
+│── main.ts # App entry point
+│── app.module.ts # Main module
 
-```bash
-# development
-$ yarn run start
+````
 
-# watch mode
-$ yarn run start:dev
+---
 
-# production mode
-$ yarn run start:prod
+## 🔧 Setup & Installation
+
+### Prerequisites
+- **Node.js** (>=16.x)
+- **Docker & Docker Compose**
+- **PostgreSQL** (if not using Docker)
+
+### 🚀 Quick Start (Docker)
+```sh
+git clone https://github.com/hassangomaa/url-shortener.git
+cd url-shortener
+
+# Start services
+docker-compose up --build -d
+
+# Run database migrations
+docker exec -it url_shortener_app npx prisma migrate deploy
+````
+
+### 🛠️ Local Setup (Without Docker)
+
+```sh
+# Install dependencies
+npm install
+
+# Setup environment variables
+cp .env.example .env
+
+# Start the app
+npm run start:dev
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ yarn run test
+## 🔑 Authentication (JWT)
 
-# e2e tests
-$ yarn run test:e2e
+- **Signup** (`POST /auth/sign-up`)
+- **Signin** (`POST /auth/sign-in`)
+- **JWT-based authentication** is required for protected routes.
 
-# test coverage
-$ yarn run test:cov
+---
+
+## 🌐 API Endpoints
+
+### **Authentication**
+
+| Method | Endpoint        | Description                          |
+| ------ | --------------- | ------------------------------------ |
+| `POST` | `/auth/sign-up` | Register new user                    |
+| `POST` | `/auth/sign-in` | Authenticate user and receive tokens |
+
+### **URL Shortening**
+
+| Method | Endpoint           | Description                                              |
+| ------ | ------------------ | -------------------------------------------------------- |
+| `POST` | `/shorten`         | Shortens a long URL (Auth required)                      |
+| `GET`  | `/:shortUrl`       | Redirects to original URL                                |
+| `GET`  | `/stats/:shortUrl` | Fetches visit statistics for a short URL (Auth required) |
+
+---
+
+## 📈 How Visit Tracking Works?
+
+1. A user **shortens a URL** using `POST /shorten`.
+2. A **unique short code** is generated and stored in the database.
+3. When a user visits the short URL (`GET /:shortUrl`):
+   - The original URL is **retrieved** from the database.
+   - A **visit record** is logged (including IP, timestamp, and user-agent).
+4. The owner can fetch **visit statistics** using `GET /stats/:shortUrl`.
+
+---
+
+## 🏗️ Database Migrations & Seeding
+
+- **Run Migrations**
+
+  ```sh
+  npx ts-node src/database/migrate.ts
+  ```
+
+- **Database Tables**:
+  - `users`: Stores registered users.
+  - `urls`: Stores original & shortened URLs.
+  - `visits`: Logs visits for analytics.
+
+---
+
+## 🐳 Docker Configuration
+
+The project is fully **Dockerized** with the following services:
+
+- **App Container** (Runs NestJS)
+- **PostgreSQL Database** (Stores URLs & visits)
+
+### Start the Application
+
+```sh
+docker-compose up --build -d
 ```
 
-## Deployment
+### **docker-compose.yml**
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+```yaml
+version: '3.8'
+services:
+  app:
+    container_name: url_shortener_app
+    build: .
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
+      NODE_ENV: production
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    command: bash -c "npx prisma db push && npm run build && npm run start:prod"
+    networks:
+      - app_network
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+  db:
+    image: postgres:13
+    container_name: url_shortener_db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
 
-```bash
-$ yarn install -g mau
-$ mau deploy
+volumes:
+  pg_data:
+
+networks:
+  app_network:
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## 📈 Real-Life Example Usage
 
-Check out a few resources that may come in handy when working with NestJS:
+### 1️⃣ **User Signs Up**
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+#### Request:
 
-## Support
+```json
+{
+  "email": "user@example.com",
+  "password": "securePassword123"
+}
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### Response:
 
-## Stay in touch
+```json
+{
+  "accessToken": "jwt_token",
+  "refreshToken": "jwt_refresh_token",
+  "user": { "id": 1, "email": "user@example.com" }
+}
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### 2️⃣ **User Shortens a URL**
 
-## License
+#### Request:
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```json
+{
+  "originalUrl": "https://www.example.com/long-url-path"
+}
+```
+
+#### Response:
+
+```json
+{
+  "shortUrl": "abc123",
+  "originalUrl": "https://www.example.com/long-url-path",
+  "createdAt": "2025-02-12T10:00:00Z"
+}
+```
+
+### 3️⃣ **User Visits the Short URL**
+
+- **GET `/abc123`** → Redirects to `https://www.example.com/long-url-path`
+- A visit record is logged.
+
+### 4️⃣ **User Checks URL Stats**
+
+#### Request:
+
+```json
+{
+  "shortUrl": "abc123"
+}
+```
+
+#### Response:
+
+```json
+{
+  "shortUrl": "abc123",
+  "visitCount": 10
+}
+```
+
+---
+
+## 📄 Conclusion
+
+This project demonstrates a **scalable, maintainable, and efficient** URL Shortener using **NestJS, PostgreSQL, Docker, and JWT Authentication**. The **clean architecture**, **raw SQL queries**, and **best security practices** ensure performance and reliability.
+
+🔥 Developed by **HASSAN GOMAA**. 🚀
+

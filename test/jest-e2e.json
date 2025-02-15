@@ -8,9 +8,6 @@
   },
   "moduleNameMapper": {
     "@app/lib/(.*)": "<rootDir>/../libs/lib/src/$1",
-    "@app/lib": "<rootDir>/../libs/lib/src",
-    "@src/*": ["src/*"],
-    "@app/*": ["src/app/*"],
-    "@database/*": ["src/database/*"]
+    "@app/lib": "<rootDir>/../libs/lib/src"
   }
 }

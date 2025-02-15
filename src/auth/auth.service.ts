@@ -6,10 +6,11 @@ import {
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { DatabaseService } from 'src/database/database.service';
+// import { DatabaseService } from 'src/database/database.service';
 import { SigninRequestDto, SigninResponseDto, SignupRequestDto } from './dto';
 import { UserMapper } from './dto/mappers';
 import { ConfigService } from '@nestjs/config';
+import { DatabaseService } from 'src/database';
 
 @Injectable()
 export class AuthService {

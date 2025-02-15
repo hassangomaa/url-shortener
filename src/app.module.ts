@@ -40,9 +40,9 @@ const PINO_LOGGER_EXCLUDE_HOSTNAME_PID = { base: undefined };
       },
       exclude: [],
     }),
-    // AuthModule,
-    // DatabaseModule,
-    // UrlsModule,
+    AuthModule,
+    DatabaseModule,
+    UrlsModule,
   ],
   controllers: [AppController],
   providers: [

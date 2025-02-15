@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { DatabaseService } from '../database/database.service';
+import { DatabaseService } from './database.service';
+
 import { UrlMapper } from './mappers/url.mapper';
 import { UrlsService } from './urls.service';
 import { UrlsController } from './urls.controller';

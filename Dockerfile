@@ -9,7 +9,7 @@ COPY package*.json ./
 COPY . .
 
 # Install app dependencies
-RUN npm install
+RUN npm install --force
 
 
 EXPOSE 3000

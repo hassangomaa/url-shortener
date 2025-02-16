@@ -23,7 +23,7 @@ services:
       - '3000:3000'
     depends_on:
       - db
-    command: bash -c "npm run start:prod"
+    command: bash -c "npx ts-node ./src/database/migrate.ts && npm run start:dev"
     networks:
       - app_network
 

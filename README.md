@@ -43,7 +43,7 @@ This project is fully **Dockerized** and uses **PostgreSQL** as the database, wi
 | **TypeScript**              | Static typing for maintainability                          |
 | **JWT (JSON Web Tokens)**   | Secure authentication                                      |
 | **Docker & Docker Compose** | Containerized development & deployment                     |
-| **Prisma (ORM)**            | Database migrations (raw SQL queries used for performance) |
+| **DB RAW QUERY**            | Database migrations (raw SQL queries used for performance) |
 | **Bcrypt**                  | Secure password hashing                                    |
 | **Swagger**                 | API Documentation                                          |
 | **Postman**                 | API testing & debugging                                    |
@@ -88,7 +88,7 @@ cd url-shortener
 docker-compose up --build -d
 
 # Run database migrations
-docker exec -it url_shortener_app npx prisma migrate deploy
+docker exec -it url_shortener_app npx ts-node ./src/database/migrate.ts
 ````
 
 ### 🛠️ Local Setup (Without Docker)
@@ -149,7 +149,7 @@ npm run start:dev
 - **Run Migrations**
 
   ```sh
-  npx ts-node src/database/migrate.ts
+  npx ts-node ./src/database/migrate.ts
   ```
 
 - **Database Tables**:
@@ -173,47 +173,6 @@ docker-compose up --build -d
 ```
 
 ### **docker-compose.yml**
-
-```yaml
-version: '3.8'
-services:
-  app:
-    container_name: url_shortener_app
-    build: .
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-      JWT_SECRET: ${JWT_SECRET}
-      PORT: ${PORT}
-      NODE_ENV: production
-    volumes:
-      - .:/app
-      - node_modules:/app/node_modules
-    ports:
-      - '3000:3000'
-    depends_on:
-      - db
-    command: bash -c "npx prisma db push && npm run build && npm run start:prod"
-    networks:
-      - app_network
-
-  db:
-    image: postgres:13
-    container_name: url_shortener_db
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    networks:
-      - app_network
-
-volumes:
-  pg_data:
-
-networks:
-  app_network:
-```
 
 ---
 

@@ -1,4 +1,4 @@
-import { ResponseStatus } from '@app/lib/enums';
+import { ResponseStatus } from '../../enums';
 import { MessageResponseDto } from './message-response.dto';
 
 export class ErrorResponseDto extends MessageResponseDto {

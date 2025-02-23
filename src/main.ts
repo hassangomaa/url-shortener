@@ -12,8 +12,8 @@ import {
 } from '@nestjs/common';
 import * as basicAuth from 'express-basic-auth';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { LanguageEnum } from '@app/lib';
 import { AllExceptionsFilter } from './common';
+import { LanguageEnum } from '../libs/lib/src';
 // import { Logger } from '@nestjs/common';
 
 async function bootstrap() {

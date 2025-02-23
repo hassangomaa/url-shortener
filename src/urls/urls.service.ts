@@ -4,10 +4,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import * as crypto from 'crypto';
-import { DatabaseService } from 'src/database/database.service';
+
 import { UrlMapper } from './mappers/url.mapper';
 import { ShortenUrlDto } from './dto/requests/shorten-url.dto';
 import { UrlEntity } from './entities/url.entity';
+import { DatabaseService } from '../database';
 
 @Injectable()
 export class UrlsService {

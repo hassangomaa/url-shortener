@@ -7,11 +7,11 @@ config();
 import { DatabaseService } from './database.service';
 
 async function migrate() {
-  console.log('Running database migration...');
-  console.log('DATABASE_URL:', process.env.DATABASE_URL);
+  // console.log('Running database migration...');
+  // console.log('DATABASE_URL:', process.env.DATABASE_URL);
 
   const db = new DatabaseService();
-  console.log('Dropping existing tables if they exist...');
+  // console.log('Dropping existing tables if they exist...');
 
   const dropTables = [
     `DROP TABLE IF EXISTS visits CASCADE;`,
@@ -23,7 +23,7 @@ async function migrate() {
     await db.query(query);
   }
 
-  console.log('Existing tables dropped. Recreating tables...');
+  // console.log('Existing tables dropped. Recreating tables...');
 
   const createTables = [
     // Users Table
@@ -69,10 +69,10 @@ async function migrate() {
     await db.query(query);
   }
 
-  console.log('Database migration complete.');
+  // console.log('Database migration complete.');
 
   /// TODO: Add Seed Data
-  console.log('Seeding data...');
+  // console.log('Seeding data...');
   const hashedPassword = await bcrypt.hash(process.env.USER_SEED_PASSWORD, 10);
   const email = process.env.USER_SEED_EMAIL;
   const now = new Date();
@@ -81,12 +81,12 @@ async function migrate() {
     [email, hashedPassword, now],
   );
 
-  console.log('Data seeding complete.');
+  // console.log('Data seeding complete.');
 
   process.exit();
 }
 
 migrate().catch((err) => {
-  console.error('Migration failed:', err);
-  process.exit(1);
+  // console.error('Migration failed:', err);
+  // process.exit(1);
 });

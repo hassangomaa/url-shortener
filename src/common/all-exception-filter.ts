@@ -1,4 +1,4 @@
-import { ErrorResponseDto } from '@app/lib/dto';
+// import { ErrorResponseDto } from '@app/lib/dto';
 import {
   ExceptionFilter,
   Catch,
@@ -7,6 +7,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
+import { ErrorResponseDto } from '../../libs/lib/src/dto';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {

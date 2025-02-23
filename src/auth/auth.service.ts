@@ -10,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import { SigninRequestDto, SigninResponseDto, SignupRequestDto } from './dto';
 import { UserMapper } from './dto/mappers';
 import { ConfigService } from '@nestjs/config';
-import { DatabaseService } from 'src/database';
+import { DatabaseService } from '../database';
 
 @Injectable()
 export class AuthService {

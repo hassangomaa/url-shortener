@@ -1,33 +1,35 @@
-import request from 'supertest';
+import * as request from 'supertest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from '../src/app.module';
-import { AppService } from '../src/app.service';
+import { DatabaseService } from '../src/database/database.service';
 
 describe('AppController (E2E)', () => {
   let app: INestApplication;
-  let appService = { getHello: () => 'Hello World!' }; // Mock Service
+  let dbService: DatabaseService;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
-    })
-      .overrideProvider(AppService)
-      .useValue(appService) // Use Mocked Service
-      .compile();
+    }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+
+    dbService = moduleFixture.get<DatabaseService>(DatabaseService);
   });
 
   it(`/GET should return "Hello World!"`, async () => {
-    return request(app.getHttpServer())
+    return request(app.getHttpServer()) // ✅ Ensure correct import
       .get('/')
       .expect(200)
-      .expect(appService.getHello()); // Expect mock value
+      .expect('Hello World!');
   });
 
   afterAll(async () => {
-    await app.close();
+    if (dbService) {
+      await dbService.close(); // ✅ Close the database properly
+    }
+    await app.close(); // ✅ Ensure the NestJS app instance is closed
   });
 });

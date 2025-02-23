@@ -19,9 +19,9 @@ import {
 } from '@nestjs/swagger';
 import { UrlsService } from './urls.service';
 import { ShortenedUrlResponseDto } from './dto/responses/shortened-url.response.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ShortenUrlDto } from './dto/requests/shorten-url.dto';
 import { UrlStatsResponseDto } from './dto/responses/url-stats.response.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @ApiTags('URLs')
 @Controller('urls')
